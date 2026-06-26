@@ -1,0 +1,49 @@
+CREATE DATABASE EmployeeDB;
+USE EmployeeDB;
+CREATE TABLE Employee (
+    EmpNo INT PRIMARY KEY,
+    EName VARCHAR(50),
+    Designation VARCHAR(50),
+    HireDate DATE,
+    Salary INT,
+    Comm INT,
+    DeptNo INT,
+    Age INT
+);
+INSERT INTO Employee (EmpNo, EName, Designation, HireDate, Salary, Comm, DeptNo, Age) VALUES
+(1, 'SMITH', 'CLERK', '2010-12-17', 11000, 0, 20, 23),
+(2, 'ALLEN', 'SALESMAN', '2011-02-20', 900, 1000, 30, 22),
+(3, 'WARD', 'SALESMAN', '2010-02-20', 1000, 1250, 30, 22),
+(4, 'JONES', 'MANAGER', '1990-01-05', 60000, 3000, 32, 28),
+(5, 'WILLIAM', 'ADMIN. OFFICER', '2011-08-06', 40000, 2000, 18, 35),
+(6, 'MARTIN', 'SR. OFFICE ASSISTANT', '1989-02-04', 35000, 1500, 19, 33),
+(7, 'SCOTT', 'RECEPTIONIST', '2012-11-11', 18000, 0, 41, 25),
+(8, 'TURNER', 'RECEPTIONIST', '2010-12-08', 20000, 0, 41, 24),
+(9, 'FORD', 'RECEPTIONIST', '2013-10-31', 18000, 0, 41, 23),
+(10, 'JAMES', 'TYPIST', '2018-05-11', 7600, 0, 42, 25),
+(11, 'TURNER', 'PEON', NULL, 5000, 400, 43, 34),
+(12, 'KING', 'ASSISTANT MANAGER', '2009-08-08', 47000, 0, 33, 37),
+(13, 'BLAKE', 'CLERK', '2015-12-19', 10000, 600, 20, 24);
+SELECT EName
+FROM Employee
+WHERE Salary > 49999 AND Salary < 70000;
+SELECT *
+FROM Employee
+WHERE DeptNo >= 19 AND DeptNo <= 30;
+SELECT *
+FROM Employee
+WHERE (Designation = 'CLERK' OR Designation = 'SALESMAN')
+AND Salary BETWEEN 10000 AND 20000;
+SELECT Designation
+FROM Employee
+WHERE Designation = 'SALESMAN' AND Salary > 900;
+SELECT *
+FROM Employee
+WHERE HireDate NOT BETWEEN '2010-06-01' AND '2013-06-02';
+SELECT EName
+FROM Employee
+WHERE Designation IN ('SR. OFFICE ASSISTANT', 'ASSISTANT MANAGER');
+SELECT EName, Designation, Salary
+FROM Employee
+WHERE Designation IN ('CLERK', 'RECEPTIONIST')
+AND Salary NOT IN (1000, 3000, 5000);
